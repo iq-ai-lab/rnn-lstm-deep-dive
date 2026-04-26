@@ -1,0 +1,247 @@
+# =============================================================================
+# RNN & LSTM Deep Dive — .gitignore
+# =============================================================================
+
+# ── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# Distribution / Packaging
+.Python
+build/
+dist/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+MANIFEST
+sdist/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# ── Jupyter Notebook ─────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# ── NumPy / PyTorch / 모델 캐시 ───────────────────────────────────────────────
+*.npy
+*.npz
+*.pkl
+*.pickle
+*.joblib
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.onnx
+
+# Framework caches (PyTorch, HuggingFace)
+.torch_cache/
+.hf_cache/
+.cache/huggingface/
+transformers_cache/
+
+# ── Sequence / Text Dataset 캐시 ──────────────────────────────────────────────
+# 각 챕터의 실험에서 다운로드되는 corpus / processed 결과
+# Ch1-02 N-gram LM (Brown, Gutenberg, PTB),
+# Ch1-03 Bengio NLM (Penn Treebank),
+# Ch2-03 Truncated BPTT (PTB perplexity),
+# Ch3 Adding/Copy/Reverse synthetic memory tasks,
+# Ch4 Adding Problem (T=200) forget bias ablation,
+# Ch5-01 BiLSTM-CRF (CoNLL-2003 NER),
+# Ch5-03 NTM (copy / repeat-copy / associative recall),
+# Ch6 Seq2Seq (WMT'14 En-Fr / IWSLT / Multi30k),
+# Ch7-04 Mamba / S4 (Long Range Arena, Path-X)
+data/
+datasets/
+corpora/
+ptb/
+wikitext/
+brown/
+gutenberg/
+imdb/
+conll03/
+multi30k/
+iwslt/
+wmt14/
+wmt16/
+lra/                           # Long Range Arena
+path-x/
+mackey-glass/
+synthetic_tasks/
+raw/
+processed/
+!data/.gitkeep
+
+# Tokenizer / vocab
+*.vocab
+*.spm                          # SentencePiece model
+*.bpe                          # Byte Pair Encoding
+vocab.txt
+sp.model
+nltk_data/
+
+# Downloaded text / parallel corpus
+*.txt.gz
+*.tsv.gz
+*.tar.gz
+*.zip
+
+# ── Experiment outputs ───────────────────────────────────────────────────────
+# 생성된 이미지·시각화 결과물 (각 챕터)
+# Ch1: word embedding 시각화·perplexity vs N 비교,
+# Ch2: BPTT gradient 시간축 plot·truncation k 별 perplexity,
+# Ch3: Pascanu spectral radius 분포·gradient norm exponential decay,
+# Ch4: LSTM gate activation·CEC gradient 보존·forget bias ablation,
+# Ch5: NTM memory read/write head·ESN reservoir dynamics,
+# Ch6: Bahdanau/Luong attention heatmap·BLEU vs sentence length,
+# Ch7: Transformer vs LSTM 훈련 시간·Mamba LRA 결과
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.pdf
+*.gif
+*.mp4
+*.webp
+
+# 훈련 결과 / 체크포인트
+results/
+outputs/
+logs/
+checkpoints/
+runs/
+wandb/
+mlruns/
+tensorboard/
+lightning_logs/
+*.log
+*.csv
+*.h5
+*.hdf5
+*.tfevents.*
+
+# 재현 실험 산출물 (논문별)
+reproductions/bengio2003/*.pt
+reproductions/sutskever2014/*.pt
+reproductions/cho2014/*.pt
+reproductions/bahdanau2015/*.pt
+reproductions/luong2015/*.pt
+reproductions/hochreiter1997/*.pt
+reproductions/jozefowicz2015/*.pt
+reproductions/pascanu2013/*.npz
+reproductions/saxe2014/*.npz
+reproductions/le2015_irnn/*.pt
+reproductions/graves2014_ntm/*.pt
+reproductions/bai2018_tcn/*.pt
+reproductions/katharopoulos2020/*.pt
+reproductions/gu2022_s4/*.pt
+reproductions/gu2023_mamba/*.pt
+reproductions/greff2017_variants/*.pt
+
+# Pretrained weight cache
+pretrained/
+weights/
+hub/
+
+# ── BLEU / 평가 ───────────────────────────────────────────────────────────────
+sacrebleu_cache/
+*.bleu
+*.meteor
+eval_results/
+
+# ── IDE / Editor ─────────────────────────────────────────────────────────────
+# JetBrains (PyCharm, IntelliJ)
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VSCode
+.vscode/
+*.code-workspace
+
+# Vim / Emacs
+*.swp
+*.swo
+*~
+\#*\#
+.\#*
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+.directory
+
+# ── Documentation build ──────────────────────────────────────────────────────
+docs/_build/
+docs/generated/
+site/
+.mkdocs_cache/
+
+# ── Secrets / Credentials ────────────────────────────────────────────────────
+.env.local
+.env.*.local
+secrets.py
+credentials.json
+*.pem
+*.key
+
+# ── GPU / CUDA cache ─────────────────────────────────────────────────────────
+.nv_cache/
+.nvidia/
+*.cu.o
+
+# ── Mamba / S4 (CUDA 빌드 산출물) ─────────────────────────────────────────────
+# Ch7-04 mamba-ssm, flash-attn 의 JIT 빌드 캐시
+.torch_extensions/
+*.ninja
+*.ninja_log
+*.ninja_deps
+selective_scan_cuda*.so
+causal_conv1d_cuda*.so
+
+# ── Miscellaneous ────────────────────────────────────────────────────────────
+.hypothesis/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.tox/
+*.mo
+*.pot
