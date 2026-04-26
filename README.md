@@ -16,11 +16,19 @@ $$\frac{\partial h_t}{\partial h_k} = \prod_{j=k+1}^{t} W_{hh}^{\top}\, \mathrm{
 
 <br/>
 
-> *BPTT를 **이름으로 아는 것** 과, $\partial L / \partial W_{hh} = \sum_t \sum_{k \le t} \big(\prod_{j=k+1}^{t} \partial h_j / \partial h_{j-1}\big)\, \partial h_k / \partial W_{hh}$ 의 Jacobian 곱 누적을 unrolled computational graph 위에서 한 step씩 유도할 수 있는 것은 다르다.*
+> *BPTT 를 **이름으로 아는 것** 과,*
 >
-> *Seq2Seq Attention을 **쓰는 것** 과, Bahdanau 2015의 additive attention $e_{ij} = v^{\top} \tanh(W_1 h_i + W_2 s_j)$ 와 Luong 2015의 multiplicative attention $e_{ij} = h_i^{\top} W s_j$ 가 어떻게 Transformer scaled dot-product self-attention 의 직계 조상이 되는지 증명할 수 있는 것은 다르다.*
+> $$\frac{\partial L}{\partial W_{hh}} = \sum_t \sum_{k \leq t} \left(\prod_{j=k+1}^{t} \frac{\partial h_j}{\partial h_{j-1}}\right) \frac{\partial h_k}{\partial W_{hh}}$$
 >
-> *State Space Model을 **단어로만 아는 것** 과, HiPPO (Gu 2020) → S4 (Gu 2022) → Mamba (Gu & Dao 2023) 의 연속 state space 이산화가 왜 RNN과 CNN의 통합 관점이고, 왜 Transformer 시대에 RNN-like 구조가 부활하고 있는지 이해하는 것은 다르다.*
+> *의 **Jacobian 곱 누적** 을 unrolled computational graph 위에서 한 step 씩 유도할 수 있는 것은 다르다.*
+>
+> *Seq2Seq Attention 을 **쓰는 것** 과, Bahdanau 2015 의 **additive attention***
+>
+> $$e_{ij} = v^\top \tanh(W_1 h_i + W_2 s_j)$$
+>
+> *와 Luong 2015 의 **multiplicative attention** ($e_{ij} = h_i^\top W s_j$) 이 어떻게 Transformer scaled dot-product self-attention 의 **직계 조상** 이 되는지 증명할 수 있는 것은 다르다.*
+>
+> *State Space Model 을 **단어로만 아는 것** 과, **HiPPO (Gu 2020) → S4 (Gu 2022) → Mamba (Gu & Dao 2023)** 의 연속 state space 이산화가 왜 **RNN 과 CNN 의 통합 관점** 이고, 왜 Transformer 시대에 RNN-like 구조가 부활하고 있는지 이해하는 것은 다르다.*
 
 <br/>
 
