@@ -26,7 +26,11 @@ $$\frac{\partial h_t}{\partial h_k} = \prod_{j=k+1}^{t} W_{hh}^{\top}\, \mathrm{
 >
 > $$e_{ij} = v^\top \tanh(W_1 h_i + W_2 s_j)$$
 >
-> *와 Luong 2015 의 **multiplicative attention** ($e_{ij} = h_i^\top W s_j$) 이 어떻게 Transformer scaled dot-product self-attention 의 **직계 조상** 이 되는지 증명할 수 있는 것은 다르다.*
+> *와 Luong 2015 의 **multiplicative attention***
+>
+> $$e_{ij} = h_i^\top W s_j$$
+>
+> *이 어떻게 Transformer scaled dot-product self-attention 의 **직계 조상** 이 되는지 증명할 수 있는 것은 다르다.*
 >
 > *State Space Model 을 **단어로만 아는 것** 과, **HiPPO (Gu 2020) → S4 (Gu 2022) → Mamba (Gu & Dao 2023)** 의 연속 state space 이산화가 왜 **RNN 과 CNN 의 통합 관점** 이고, 왜 Transformer 시대에 RNN-like 구조가 부활하고 있는지 이해하는 것은 다르다.*
 
